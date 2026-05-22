@@ -1,0 +1,32 @@
+# 编译产物目录
+out/
+
+# opp_msgc 自动生成的文件（从 .msg 重新生成，不需要提交）
+*_m.h
+*_m.cc
+
+# opp_makemake 生成的 Makefile（每台机器路径不同，需本地重新生成）
+Makefile
+
+# IDE 配置目录
+.idea/
+.vscode/
+*.launch
+
+# opp_makemake 在项目目录下生成的可执行文件（无后缀二进制）
+pingpong/pingpong
+exercise1/exercise1
+exercise2/exercise2
+exercise3/exercise3
+exercise4/exercise4
+
+# Qtenv 图形界面运行时生成的本地配置（机器相关，不需要提交）
+.qtenvrc
+
+# 仿真运行产生的结果文件
+results/
+*.sca
+*.vec
+
+# 系统文件
+.DS_Store
