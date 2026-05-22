@@ -19,9 +19,7 @@
     --border: #e5e7eb;
     --radius: 8px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
     color: var(--gray);
@@ -29,34 +27,27 @@
     line-height: 1.7;
   }
 
-  /* ── 顶部 banner ── */
+  /* ── banner ── */
   header {
     background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     color: #fff;
     padding: 48px 40px 40px;
     text-align: center;
   }
-  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: .02em; }
-  header p  { margin-top: 10px; font-size: 1.05rem; opacity: .85; }
+  header h1 { font-size: 2rem; font-weight: 700; }
+  header p  { margin-top: 10px; font-size: 1rem; opacity: .85; }
   .badge {
-    display: inline-block;
-    margin-top: 16px;
+    display: inline-block; margin-top: 16px;
     padding: 4px 14px;
     background: rgba(255,255,255,.18);
     border: 1px solid rgba(255,255,255,.35);
-    border-radius: 20px;
-    font-size: .82rem;
-    letter-spacing: .05em;
+    border-radius: 20px; font-size: .82rem;
   }
 
-  /* ── 正文容器 ── */
-  main {
-    max-width: 960px;
-    margin: 36px auto 60px;
-    padding: 0 20px;
-  }
+  /* ── main ── */
+  main { max-width: 960px; margin: 36px auto 60px; padding: 0 20px; }
 
-  /* ── 章节卡片 ── */
+  /* ── section card ── */
   section {
     background: #fff;
     border: 1px solid var(--border);
@@ -65,157 +56,242 @@
     overflow: hidden;
   }
   .sec-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
     padding: 18px 24px;
     border-bottom: 1px solid var(--border);
     background: var(--gray-light);
   }
   .sec-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
+    width: 36px; height: 36px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    flex-shrink: 0;
+    font-size: 1.1rem; flex-shrink: 0;
   }
   .icon-blue   { background: var(--blue-light);   color: var(--blue);   }
   .icon-green  { background: var(--green-light);  color: var(--green);  }
   .icon-orange { background: var(--orange-light); color: var(--orange); }
   .icon-purple { background: var(--purple-light); color: var(--purple); }
-
-  .sec-header h2 { font-size: 1.05rem; font-weight: 600; }
+  .sec-header h2  { font-size: 1.05rem; font-weight: 600; }
   .sec-header .sub { font-size: .82rem; color: #6b7280; margin-top: 1px; }
-
   .sec-body { padding: 24px; }
   .sec-body p { margin-bottom: 14px; }
   .sec-body p:last-child { margin-bottom: 0; }
+
+  /* ── 层叠架构图 ── */
+  .arch-stack { display: flex; flex-direction: column; gap: 4px; margin: 20px 0; }
+  .arch-layer {
+    display: flex; align-items: center;
+    border-radius: 6px; padding: 14px 20px; gap: 16px;
+  }
+  .arch-layer .layer-label {
+    font-weight: 600; font-size: .9rem; white-space: nowrap; min-width: 90px;
+  }
+  .arch-layer .layer-desc { font-size: .85rem; opacity: .9; }
+  .layer-1 { background: #1e3a5f; color: #fff; }
+  .layer-2 { background: #1d4ed8; color: #fff; }
+  .layer-3 { background: #2563eb; color: #fff; }
+  .layer-4 { background: #3b82f6; color: #fff; }
+  .arch-arrow { text-align: center; color: #9ca3af; font-size: .8rem; }
+
+  /* ── 拓扑图（CSS 画的） ── */
+  .topo-wrap {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .topo-network {
+    border: 2px dashed #94a3b8;
+    border-radius: 10px;
+    padding: 20px 24px;
+    position: relative;
+  }
+  .topo-network-label {
+    position: absolute; top: -12px; left: 16px;
+    background: #f8fafc; padding: 0 8px;
+    font-size: .78rem; color: #64748b; font-weight: 600;
+  }
+  .topo-row {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+  }
+  .topo-node {
+    background: #fff;
+    border: 2px solid var(--blue);
+    border-radius: 8px;
+    padding: 10px 18px;
+    text-align: center;
+    min-width: 90px;
+  }
+  .topo-node .n-title { font-weight: 600; font-size: .88rem; color: var(--blue); }
+  .topo-node .n-sub   { font-size: .75rem; color: #6b7280; margin-top: 2px; }
+  .topo-line {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; flex: 1; max-width: 120px;
+  }
+  .topo-line .line-bar {
+    width: 100%; height: 2px; background: #64748b;
+    position: relative;
+  }
+  .topo-line .line-bar::before,
+  .topo-line .line-bar::after {
+    content: ''; position: absolute; top: -4px;
+    width: 0; height: 0;
+  }
+  .topo-line .line-bar::after {
+    right: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid #64748b;
+  }
+  .topo-line .line-bar::before {
+    left: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 8px solid #64748b;
+  }
+  .topo-line .line-label {
+    font-size: .72rem; color: #64748b; white-space: nowrap;
+  }
+
+  /* 单向箭头线 */
+  .arrow-line {
+    display: flex; align-items: center; flex: 1; max-width: 100px;
+  }
+  .arrow-line .al-bar {
+    flex: 1; height: 2px; background: #64748b;
+  }
+  .arrow-line .al-head {
+    width: 0; height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid #64748b;
+  }
+
+  /* 纵向分叉 */
+  .topo-fork {
+    display: flex; flex-direction: column; gap: 12px;
+    padding-left: 16px;
+  }
+  .topo-fork-item {
+    display: flex; align-items: center; gap: 0;
+  }
 
   /* ── 概念卡片网格 ── */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 14px;
-    margin: 20px 0;
+    gap: 14px; margin: 20px 0;
   }
   .card {
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
+    border-radius: var(--radius); padding: 16px;
   }
   .card-title {
-    font-weight: 600;
-    font-size: .9rem;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
+    font-weight: 600; font-size: .9rem; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 7px;
   }
-  .card-title .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .card-title .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .card p { font-size: .85rem; color: #4b5563; }
 
-  /* ── ASCII / SVG 图 ── */
-  .diagram {
-    background: #1e293b;
-    color: #e2e8f0;
-    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
-    font-size: .82rem;
-    line-height: 1.6;
-    padding: 20px 24px;
+  /* ── 事件队列图 ── */
+  .queue-box {
+    background: #f8fafc;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    overflow-x: auto;
-    margin: 20px 0;
+    overflow: hidden; margin: 20px 0;
   }
-  .diagram .c-green  { color: #86efac; }
-  .diagram .c-blue   { color: #93c5fd; }
-  .diagram .c-yellow { color: #fde68a; }
-  .diagram .c-pink   { color: #f9a8d4; }
-  .diagram .c-gray   { color: #94a3b8; }
+  .queue-header {
+    background: #1e293b; color: #e2e8f0;
+    padding: 10px 18px; font-size: .82rem; font-weight: 600;
+  }
+  .queue-row {
+    display: flex; align-items: center; gap: 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .85rem;
+  }
+  .queue-row:last-child { border-bottom: none; }
+  .queue-time {
+    min-width: 90px; padding: 10px 16px;
+    font-weight: 600; font-family: monospace;
+    background: #f1f5f9; border-right: 1px solid var(--border);
+    font-size: .82rem;
+  }
+  .queue-event { padding: 10px 16px; flex: 1; }
+  .queue-row.active { background: #eff6ff; }
+  .queue-row.active .queue-time { color: var(--blue); }
+  .qt-a { color: var(--blue);   font-weight: 600; }
+  .qt-b { color: var(--green);  font-weight: 600; }
+  .qt-c { color: var(--orange); font-weight: 600; }
 
   /* ── 流程步骤 ── */
   .steps { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
   .step  {
-    display: flex;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px dashed var(--border);
+    display: flex; gap: 16px;
+    padding: 14px 0; border-bottom: 1px dashed var(--border);
   }
   .step:last-child { border-bottom: none; }
   .step-num {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: var(--blue);
-    color: #fff;
-    font-size: .8rem;
-    font-weight: 700;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    font-size: .8rem; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
+    flex-shrink: 0; margin-top: 2px;
   }
   .step-body strong { display: block; font-size: .9rem; margin-bottom: 3px; }
   .step-body span   { font-size: .84rem; color: #4b5563; }
 
-  /* ── 对比表格 ── */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: .88rem;
-    margin: 20px 0;
+  /* ── 工具链流程图 ── */
+  .pipeline {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 0; margin: 20px 0;
   }
-  th {
-    background: #1e3a5f;
-    color: #fff;
-    padding: 10px 14px;
-    text-align: left;
-    font-weight: 600;
+  .pipe-step {
+    background: #fff; border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 12px 16px;
+    text-align: center; min-width: 110px;
   }
+  .pipe-step .ps-icon { font-size: 1.2rem; }
+  .pipe-step .ps-title { font-size: .82rem; font-weight: 600; margin-top: 4px; }
+  .pipe-step .ps-sub   { font-size: .75rem; color: #6b7280; }
+  .pipe-step.highlight { background: var(--blue-light); border-color: var(--blue); }
+  .pipe-arrow {
+    flex: 1; min-width: 20px; max-width: 40px;
+    display: flex; align-items: center; justify-content: center;
+    color: #9ca3af; font-size: 1.2rem;
+  }
+
+  /* ── 表格 ── */
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; margin: 20px 0; }
+  th { background: #1e3a5f; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
   td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
   tr:nth-child(even) td { background: var(--gray-light); }
   tr:last-child td { border-bottom: none; }
 
   /* ── 代码块 ── */
   pre {
-    background: #1e293b;
-    color: #e2e8f0;
-    padding: 16px 20px;
-    border-radius: var(--radius);
-    overflow-x: auto;
-    font-size: .82rem;
-    line-height: 1.65;
+    background: #1e293b; color: #e2e8f0;
+    padding: 16px 20px; border-radius: var(--radius);
+    overflow-x: auto; font-size: .82rem; line-height: 1.65;
     margin: 16px 0;
   }
   code { font-family: "SFMono-Regular", "Consolas", monospace; }
-  pre .kw  { color: #93c5fd; }   /* keyword  */
-  pre .tp  { color: #86efac; }   /* type     */
-  pre .str { color: #fde68a; }   /* string   */
-  pre .cm  { color: #64748b; }   /* comment  */
-  pre .fn  { color: #f9a8d4; }   /* function */
+  pre .kw  { color: #93c5fd; }
+  pre .tp  { color: #86efac; }
+  pre .str { color: #fde68a; }
+  pre .cm  { color: #64748b; }
+  pre .fn  { color: #f9a8d4; }
 
   /* ── callout ── */
   .callout {
-    display: flex;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: var(--radius);
-    margin: 16px 0;
-    font-size: .88rem;
+    display: flex; gap: 12px; padding: 14px 16px;
+    border-radius: var(--radius); margin: 16px 0; font-size: .88rem;
   }
   .callout-blue   { background: var(--blue-light);   border-left: 3px solid var(--blue);   }
   .callout-green  { background: var(--green-light);  border-left: 3px solid var(--green);  }
   .callout-orange { background: var(--orange-light); border-left: 3px solid var(--orange); }
   .callout .icon  { font-size: 1.1rem; flex-shrink: 0; }
 
-  /* ── 页脚 ── */
-  footer {
-    text-align: center;
-    font-size: .8rem;
-    color: #9ca3af;
-    padding: 24px;
-  }
+  footer { text-align: center; font-size: .8rem; color: #9ca3af; padding: 24px; }
 </style>
 </head>
 <body>
@@ -238,37 +314,45 @@
       </div>
     </div>
     <div class="sec-body">
-      <p>OMNeT++ 是一个<strong>基于组件的离散事件仿真框架</strong>。整个系统从下到上分为四层：</p>
+      <p>OMNeT++ 是一个<strong>基于组件的离散事件仿真框架</strong>，整个系统从下到上分为四层：</p>
 
-      <div class="diagram"><span class="c-gray">┌─────────────────────────────────────────────────────┐
-│                   用户仿真模型层                        │
-│  <span class="c-green">NED 文件</span>（拓扑描述）  +  <span class="c-blue">C++ 模块代码</span>（行为逻辑）     │
-├─────────────────────────────────────────────────────┤
-│                   仿真内核层                           │
-│  <span class="c-yellow">事件队列</span>  ·  <span class="c-yellow">仿真时钟</span>  ·  <span class="c-yellow">消息路由</span>  ·  <span class="c-yellow">内存管理</span>    │
-├─────────────────────────────────────────────────────┤
-│                   运行环境层（Env）                     │
-│  <span class="c-pink">Cmdenv</span>（命令行）   <span class="c-pink">Qtenv</span>（图形界面）                │
-├─────────────────────────────────────────────────────┤
-│                   支撑工具层                           │
-│  <span class="c-blue">opp_makemake</span>  <span class="c-blue">opp_msgc</span>  <span class="c-blue">opp_run</span>  <span class="c-blue">IDE 插件</span>         │
-└─────────────────────────────────────────────────────┘</span></div>
+      <div class="arch-stack">
+        <div class="arch-layer layer-1">
+          <div class="layer-label">用户模型层</div>
+          <div class="layer-desc">开发者编写的 NED 文件（描述拓扑）和 C++ 模块代码（实现行为）</div>
+        </div>
+        <div class="arch-arrow">▲ 构建于</div>
+        <div class="arch-layer layer-2">
+          <div class="layer-label">仿真内核层</div>
+          <div class="layer-desc">事件队列 · 仿真时钟 · 消息路由 · 内存管理</div>
+        </div>
+        <div class="arch-arrow">▲ 构建于</div>
+        <div class="arch-layer layer-3">
+          <div class="layer-label">运行环境层</div>
+          <div class="layer-desc">Cmdenv（命令行批量运行） · Qtenv（图形界面可视化调试）</div>
+        </div>
+        <div class="arch-arrow">▲ 构建于</div>
+        <div class="arch-layer layer-4">
+          <div class="layer-label">支撑工具层</div>
+          <div class="layer-desc">opp_makemake · opp_msgc · opp_run · IDE 插件</div>
+        </div>
+      </div>
 
       <div class="card-grid">
         <div class="card">
-          <div class="card-title"><span class="dot" style="background:#2563eb"></span>用户仿真模型层</div>
+          <div class="card-title"><span class="dot" style="background:#1e3a5f"></span>用户模型层</div>
           <p>开发者编写的 NED 文件和 C++ 模块，描述"网络长什么样"和"节点怎么行动"。</p>
         </div>
         <div class="card">
-          <div class="card-title"><span class="dot" style="background:#ca8a04"></span>仿真内核层</div>
+          <div class="card-title"><span class="dot" style="background:#1d4ed8"></span>仿真内核层</div>
           <p>OMNeT++ 框架核心，负责驱动事件队列、推进仿真时钟、在模块间传递消息。</p>
         </div>
         <div class="card">
-          <div class="card-title"><span class="dot" style="background:#db2777"></span>运行环境层</div>
+          <div class="card-title"><span class="dot" style="background:#2563eb"></span>运行环境层</div>
           <p>Cmdenv 用于批量脚本运行，Qtenv 提供可暂停、可可视化的图形调试界面。</p>
         </div>
         <div class="card">
-          <div class="card-title"><span class="dot" style="background:#16a34a"></span>支撑工具层</div>
+          <div class="card-title"><span class="dot" style="background:#3b82f6"></span>支撑工具层</div>
           <p>opp_msgc 编译 .msg 文件，opp_makemake 生成 Makefile，opp_run 启动仿真。</p>
         </div>
       </div>
@@ -286,24 +370,33 @@
     </div>
     <div class="sec-body">
 
-      <div class="diagram"><span class="c-gray">                    ┌──────────────────────────────┐
-                    │    复合模块 Network           │
-                    │                              │
-                    │  ┌──────────┐   ┌─────────┐  │
-                    │  │ 简单模块 │   │ 简单模块 │  │
-                    │  │  NodeA   │   │  NodeB  │  │
-                    │  │          │   │         │  │
-                    │  │   gate <span class="c-green">○─────────○</span> gate│  │
-                    │  └──────────┘   └─────────┘  │
-                    │        <span class="c-yellow">↑ 信道（delay=100ms）</span>    │
-                    └──────────────────────────────┘</span></div>
+      <!-- 拓扑示意图（纯 CSS） -->
+      <div class="topo-wrap">
+        <div class="topo-network">
+          <span class="topo-network-label">复合模块 / network PingPongNetwork</span>
+          <div class="topo-row">
+            <div class="topo-node">
+              <div class="n-title">NodeA</div>
+              <div class="n-sub">simple module</div>
+            </div>
+            <div class="topo-line">
+              <div class="line-bar"></div>
+              <div class="line-label">Channel · delay=100ms</div>
+            </div>
+            <div class="topo-node">
+              <div class="n-title">NodeB</div>
+              <div class="n-sub">simple module</div>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:.78rem;color:#6b7280;margin-top:12px;">
+          双向连线两端各有一个 <strong>inout gate</strong>，内部自动拆分为 gate$i（输入）和 gate$o（输出）
+        </p>
+      </div>
 
       <table>
         <tr>
-          <th>概念</th>
-          <th>NED 关键字</th>
-          <th>C++ 基类</th>
-          <th>说明</th>
+          <th>概念</th><th>NED 关键字</th><th>C++ 基类</th><th>说明</th>
         </tr>
         <tr>
           <td><strong>简单模块</strong></td>
@@ -337,7 +430,7 @@
         </tr>
         <tr>
           <td><strong>消息（Message）</strong></td>
-          <td><code>packet / message</code> (.msg)</td>
+          <td><code>packet / message</code>（.msg 文件）</td>
           <td><code>cMessage / cPacket</code></td>
           <td>模块间传递的数据单元，也用作定时器</td>
         </tr>
@@ -345,7 +438,7 @@
 
       <div class="callout callout-blue">
         <span class="icon">💡</span>
-        <div><strong>简单模块 vs 复合模块：</strong>简单模块是叶子节点，复合模块是容器。实际仿真行为只发生在简单模块里。复合模块只是用来组织拓扑结构。</div>
+        <div><strong>简单模块 vs 复合模块：</strong>简单模块是叶子节点，有 C++ 行为代码；复合模块是容器，只做拓扑组织，实际仿真行为只发生在简单模块里。</div>
       </div>
     </div>
   </section>
@@ -360,35 +453,35 @@
       </div>
     </div>
     <div class="sec-body">
-      <p>NED（Network Description）是 OMNeT++ 专用的拓扑描述语言，负责"画网络图"，C++ 代码负责"写行为逻辑"，两者通过<strong>模块名</strong>绑定。</p>
+      <p>NED（Network Description）是 OMNeT++ 专用的拓扑描述语言，负责"画网络图"。C++ 代码负责"写行为逻辑"。两者通过<strong>模块名字符串</strong>自动绑定。</p>
 
       <pre><code><span class="cm">// 1. 声明简单模块（描述接口，不写行为）</span>
 <span class="kw">simple</span> <span class="tp">Router</span>
 {
     <span class="kw">parameters</span>:
-        <span class="kw">int</span>    myAddr   = <span class="fn">default</span>(1);   <span class="cm">// NED 参数，C++ 用 par() 读取</span>
-        <span class="kw">double</span> delay    = <span class="fn">default</span>(0.1);
+        <span class="kw">int</span>    myAddr = <span class="fn">default</span>(1);    <span class="cm">// NED 参数，C++ 用 par() 读取</span>
+        <span class="kw">double</span> delay  = <span class="fn">default</span>(0.1);
     <span class="kw">gates</span>:
-        <span class="kw">input</span>  in;        <span class="cm">// 单向输入门</span>
-        <span class="kw">output</span> out[];     <span class="cm">// 动态大小输出门阵列</span>
+        <span class="kw">input</span>  in;       <span class="cm">// 单向输入门</span>
+        <span class="kw">output</span> out[];    <span class="cm">// 动态大小输出门阵列</span>
 }
 
 <span class="cm">// 2. 声明网络（描述拓扑）</span>
 <span class="kw">network</span> <span class="tp">MyNetwork</span>
 {
     <span class="kw">submodules</span>:
-        router : <span class="tp">Router</span> { myAddr = 5; }   <span class="cm">// 实例化并赋参数</span>
+        router : <span class="tp">Router</span> { myAddr = 5; }
         host0  : <span class="tp">Host</span>;
         host1  : <span class="tp">Host</span>;
     <span class="kw">connections</span>:
-        host0.out  --&gt; { delay = 10ms; } --&gt; router.in;  <span class="cm">// 带信道参数的连线</span>
+        host0.out  --&gt; { delay = 10ms; } --&gt; router.in;
         router.out++ --&gt; host0.in;   <span class="cm">// ++ 动态追加门阵列元素</span>
         router.out++ --&gt; host1.in;
 }</code></pre>
 
       <div class="callout callout-green">
         <span class="icon">🔗</span>
-        <div><strong>NED 与 C++ 的绑定：</strong>NED 里写 <code>simple Router</code>，C++ 里写 <code>class Router : public cSimpleModule</code> 和 <code>Define_Module(Router)</code>，框架靠模块名字符串自动匹配。</div>
+        <div><strong>NED 与 C++ 的绑定：</strong>NED 里写 <code>simple Router</code>，C++ 里写 <code>class Router : public cSimpleModule</code> 加 <code>Define_Module(Router)</code>，框架用模块名字符串自动匹配，不需要手动注册。</div>
       </div>
     </div>
   </section>
@@ -403,68 +496,78 @@
       </div>
     </div>
     <div class="sec-body">
-      <p>OMNeT++ 是<strong>离散事件仿真（Discrete Event Simulation，DES）</strong>框架。仿真时间不是连续流逝的，而是由事件驱动跳跃推进的。</p>
+      <p>OMNeT++ 是<strong>离散事件仿真（DES）</strong>框架。仿真时间不是连续流逝的，而是由事件驱动跳跃推进的。引擎维护一个按时间戳排序的事件队列，每次取出最早的事件执行。</p>
 
-      <div class="diagram"><span class="c-gray">  事件队列（按仿真时间戳从小到大排序）
-  ┌──────────┬──────────────────────────────────────┐
-  │ 时间戳   │ 事件                                  │
-  ├──────────┼──────────────────────────────────────┤
-  │ <span class="c-green">t = 0.0s</span> │ nodeA 的 "start" 自消息触发            │
-  │ <span class="c-green">t = 0.1s</span> │ nodeB 收到 "ping"（经过 100ms 信道延迟）│
-  │ <span class="c-yellow">t = 1.1s</span> │ nodeB 的 "reply-timer" 触发            │
-  │ <span class="c-yellow">t = 1.2s</span> │ nodeA 收到 "pong"                      │
-  │ <span class="c-pink">t = 2.2s</span> │ nodeA 的 "reply-timer" 触发            │
-  │  ...     │  ...                                  │
-  └──────────┴──────────────────────────────────────┘
-
-  引擎主循环：
-  <span class="c-blue">while</span> (队列不空 &amp;&amp; 未到 sim-time-limit) {
-      取出队头事件（最小时间戳）
-      把仿真时钟 <span class="c-green">跳到</span> 该时间戳      ← 不是等待，是直接跳
-      调用对应模块的 <span class="c-yellow">handleMessage()</span>
-  }</span></div>
+      <!-- 事件队列可视化 -->
+      <div class="queue-box">
+        <div class="queue-header">📋 事件队列（按仿真时间戳从小到大排序）</div>
+        <div class="queue-row active">
+          <div class="queue-time">t = 0.0 s</div>
+          <div class="queue-event"><span class="qt-a">nodeA</span> 的 "start" 自消息触发 → 调用 handleMessage()</div>
+        </div>
+        <div class="queue-row">
+          <div class="queue-time">t = 0.1 s</div>
+          <div class="queue-event"><span class="qt-b">nodeB</span> 收到 "ping"（经过 100ms 信道延迟后到达）</div>
+        </div>
+        <div class="queue-row">
+          <div class="queue-time">t = 1.1 s</div>
+          <div class="queue-event"><span class="qt-b">nodeB</span> 的 "reply-timer" 触发 → 发出 "pong"</div>
+        </div>
+        <div class="queue-row">
+          <div class="queue-time">t = 1.2 s</div>
+          <div class="queue-event"><span class="qt-a">nodeA</span> 收到 "pong"（再经 100ms 延迟到达）</div>
+        </div>
+        <div class="queue-row">
+          <div class="queue-time">t = 2.2 s</div>
+          <div class="queue-event"><span class="qt-a">nodeA</span> 的 "reply-timer" 触发 → 发出 "ping"</div>
+        </div>
+        <div class="queue-row">
+          <div class="queue-time">⋯</div>
+          <div class="queue-event" style="color:#9ca3af">持续循环，直到 sim-time-limit = 10s</div>
+        </div>
+      </div>
 
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
           <div class="step-body">
             <strong>initialize() 阶段</strong>
-            <span>所有模块按层次依次调用 initialize()，模块在此安排初始事件（如 scheduleAt(0, msg)）。</span>
+            <span>仿真启动后，所有模块依次调用 initialize()。模块在此安排初始事件，如 <code>scheduleAt(0, msg)</code>。</span>
           </div>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <div class="step-body">
-            <strong>事件循环阶段</strong>
-            <span>引擎反复从队列取最早事件，推进仿真时钟，调用 handleMessage()。模块在此安排后续事件或发送消息。</span>
+            <strong>事件循环</strong>
+            <span>引擎反复从队列取最早事件，把仿真时钟<strong>直接跳</strong>到该时间戳，调用对应模块的 handleMessage()。</span>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-body">
-            <strong>消息传递</strong>
-            <span>send(msg, gate) 不是"立即送达"，而是把消息放入队列，时间戳 = 当前时间 + 信道延迟。</span>
+            <strong>send() 的本质</strong>
+            <span><code>send(msg, gate)</code> 不是立即送达，而是把消息放入队列，时间戳 = 当前时间 + 信道延迟。</span>
           </div>
         </div>
         <div class="step">
           <div class="step-num">4</div>
           <div class="step-body">
-            <strong>自消息（定时器）</strong>
-            <span>scheduleAt(t, msg) 把消息放入队列指向自己，时间戳 = t。这是 OMNeT++ 里实现"等待"的唯一正确方式，不能用 sleep()。</span>
+            <strong>自消息 = 定时器</strong>
+            <span><code>scheduleAt(t, msg)</code> 把消息放回队列指向自己，到时间 t 触发 handleMessage()。这是实现"等待"的唯一正确方式，绝对不能用 sleep()。</span>
           </div>
         </div>
         <div class="step">
           <div class="step-num">5</div>
           <div class="step-body">
             <strong>仿真结束</strong>
-            <span>到达 omnetpp.ini 里的 sim-time-limit，或事件队列为空，引擎调用 finish() 后退出。</span>
+            <span>到达 <code>sim-time-limit</code>，或队列为空，引擎调用各模块的 finish() 后退出。</span>
           </div>
         </div>
       </div>
 
       <div class="callout callout-orange">
         <span class="icon">⚠️</span>
-        <div><strong>关键认知：</strong>仿真时间与真实时间无关。<code>waitTime = 100s</code> 和 <code>waitTime = 1s</code> 的运行速度几乎相同，因为引擎只是跳跃时间戳，不做真实等待。</div>
+        <div><strong>关键认知：仿真时间 ≠ 真实时间。</strong>把 waitTime 从 1s 改成 100s，程序运行速度几乎不变——引擎只是把时间戳数字变大，并不真实等待。</div>
       </div>
     </div>
   </section>
@@ -479,13 +582,11 @@
       </div>
     </div>
     <div class="sec-body">
-      <p>OMNeT++ 采用<strong>手动内存管理</strong>规则，消息对象在堆上分配，框架不自动回收。</p>
+      <p>OMNeT++ 采用<strong>手动内存管理</strong>：消息在堆上分配，框架不自动回收，必须由模块负责 delete。</p>
 
       <table>
         <tr>
-          <th>操作</th>
-          <th>所有权变化</th>
-          <th>你需要做什么</th>
+          <th>操作</th><th>所有权变化</th><th>你需要做什么</th>
         </tr>
         <tr>
           <td><code>new cMessage("x")</code></td>
@@ -500,7 +601,7 @@
         <tr>
           <td><code>scheduleAt(t, msg)</code></td>
           <td>所有权交给框架</td>
-          <td>触发后框架自动交回，在 handleMessage 里负责 delete</td>
+          <td>触发回调后，在 handleMessage 里负责 delete</td>
         </tr>
         <tr>
           <td><code>handleMessage(msg)</code> 接收</td>
@@ -510,7 +611,7 @@
         <tr>
           <td><code>cancelAndDelete(msg)</code></td>
           <td>—</td>
-          <td>取消未触发的自消息并释放，最常用的取消方式</td>
+          <td>取消未触发的自消息并立即释放，最常用的取消方式</td>
         </tr>
       </table>
 
@@ -518,14 +619,14 @@
     <span class="tp">AppPacket</span> *pkt = <span class="fn">check_and_cast</span>&lt;<span class="tp">AppPacket</span>*&gt;(msg);  <span class="cm">// 安全转型</span>
 
     <span class="kw">if</span> (pkt-&gt;<span class="fn">getDestAddr</span>() == myAddr) {
-        <span class="kw">delete</span> pkt;          <span class="cm">// 到达终点，消费并释放 ✓</span>
+        <span class="kw">delete</span> pkt;                          <span class="cm">// 到达终点，消费并释放 ✓</span>
 
     } <span class="kw">else</span> {
         <span class="kw">auto</span> it = routingTable.<span class="fn">find</span>(pkt-&gt;<span class="fn">getDestAddr</span>());
         <span class="kw">if</span> (it != routingTable.<span class="fn">end</span>()) {
-            <span class="fn">send</span>(pkt, <span class="str">"out"</span>, it-&gt;second);  <span class="cm">// 转发，所有权交出 ✓</span>
+            <span class="fn">send</span>(pkt, <span class="str">"out"</span>, it-&gt;second);      <span class="cm">// 转发，所有权交出 ✓</span>
         } <span class="kw">else</span> {
-            <span class="kw">delete</span> pkt;        <span class="cm">// 丢包，必须手动释放 ✓</span>
+            <span class="kw">delete</span> pkt;                      <span class="cm">// 丢包，手动释放 ✓</span>
         }
     }
 }</code></pre>
@@ -542,41 +643,72 @@
       </div>
     </div>
     <div class="sec-body">
-      <div class="diagram"><span class="c-gray">  ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
-  │ 写 NED   │ →  │ 写 .msg  │ →  │ 写 C++   │ →  │ 配置 ini │
-  │ 描述拓扑 │    │ 定义消息 │    │ 实现行为 │    │ 设置参数 │
-  └──────────┘    └──────────┘    └──────────┘    └──────────┘
-                       │                                │
-                  <span class="c-yellow">opp_msgc</span>                           │
-                  自动生成                              │
-                  *_m.h / *_m.cc                       │
-                       │                               │
-  ┌──────────────────────────────────────────────────────┐
-  │  <span class="c-green">opp_makemake -f --deep -o &lt;名称&gt;</span>  生成 Makefile      │
-  │  <span class="c-green">make -j$(nproc)</span>                  编译链接            │
-  │  <span class="c-blue">./out/gcc-release/&lt;名称&gt; -u Cmdenv omnetpp.ini</span>  运行 │
-  └──────────────────────────────────────────────────────┘</span></div>
+
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="ps-icon">📝</div>
+          <div class="ps-title">写 NED</div>
+          <div class="ps-sub">描述拓扑</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="ps-icon">📦</div>
+          <div class="ps-title">写 .msg</div>
+          <div class="ps-sub">定义消息字段</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step highlight">
+          <div class="ps-icon">⚡</div>
+          <div class="ps-title">opp_msgc</div>
+          <div class="ps-sub">自动生成 *_m.h</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="ps-icon">💻</div>
+          <div class="ps-title">写 C++</div>
+          <div class="ps-sub">实现模块行为</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="ps-icon">⚙️</div>
+          <div class="ps-title">配置 ini</div>
+          <div class="ps-sub">设置运行参数</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step highlight">
+          <div class="ps-icon">🔨</div>
+          <div class="ps-title">make</div>
+          <div class="ps-sub">编译链接</div>
+        </div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step">
+          <div class="ps-icon">▶️</div>
+          <div class="ps-title">运行</div>
+          <div class="ps-sub">Cmdenv / Qtenv</div>
+        </div>
+      </div>
 
       <table>
-        <tr>
-          <th>工具</th>
-          <th>作用</th>
-        </tr>
+        <tr><th>工具</th><th>作用</th></tr>
         <tr>
           <td><code>opp_msgc</code></td>
           <td>将 .msg 文件编译成 C++ 类（<code>*_m.h</code> + <code>*_m.cc</code>），make 时自动调用</td>
         </tr>
         <tr>
-          <td><code>opp_makemake</code></td>
-          <td>扫描目录生成适合 OMNeT++ 的 Makefile，支持 <code>--deep</code> 递归子目录</td>
+          <td><code>opp_makemake -f --deep -o &lt;名称&gt;</code></td>
+          <td>扫描目录下所有源文件，生成适合 OMNeT++ 的 Makefile</td>
         </tr>
         <tr>
-          <td><code>Cmdenv</code></td>
-          <td>命令行运行环境，适合批量仿真和查看文本日志</td>
+          <td><code>make -j$(nproc)</code></td>
+          <td>多核并行编译，生成可执行文件到 out/gcc-release/</td>
         </tr>
         <tr>
-          <td><code>Qtenv</code></td>
-          <td>图形运行环境，可动画展示消息流动、单步调试、查看模块内部状态</td>
+          <td><code>./exe -u Cmdenv omnetpp.ini</code></td>
+          <td>命令行模式运行，适合查看日志和批量仿真</td>
+        </tr>
+        <tr>
+          <td><code>./exe omnetpp.ini</code></td>
+          <td>图形界面（Qtenv）运行，可动画展示消息流动、单步调试</td>
         </tr>
       </table>
     </div>
