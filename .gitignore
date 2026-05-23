@@ -20,6 +20,7 @@ exercise2/exercise2
 exercise3/exercise3
 exercise4/exercise4
 simple_router/simple_router
+queue_sim/queue_sim
 
 # Qtenv 图形界面运行时生成的本地配置（机器相关，不需要提交）
 .qtenvrc
