@@ -10,6 +10,7 @@ network SimpleRouterNetwork
         router    : SimpleRouter;
         receiver0 : Receiver;
         receiver1 : Receiver;
+        receiver2 : Receiver;
 
     connections:
         sender.out --> router.in;
@@ -19,4 +20,5 @@ network SimpleRouterNetwork
         //   第二次 ++ 创建 out[1] 连 receiver1
         router.out++ --> receiver0.in;
         router.out++ --> receiver1.in;
+        router.out++ --> receiver2.in;
 }

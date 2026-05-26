@@ -7,8 +7,8 @@ Define_Module(Sender);
 //   10 -> 命中路由表 out[0]   => [转发]
 //   20 -> 命中路由表 out[1]   => [转发]
 //   99 -> 路由表中没有        => [丢包]
-static const int DEST_LIST[] = {5, 10, 20, 99};
-static const int DEST_COUNT  = 4;
+static const int DEST_LIST[] = {5, 10, 20, 30,99};
+static const int DEST_COUNT  = 5;
 
 void Sender::initialize()
 {
